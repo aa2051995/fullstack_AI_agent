@@ -43,7 +43,7 @@ pipeline {
         stage('CodeQL Analysis') {
             steps {
                 echo "Running CodeQL analysis..."
-                sh "mkdir -p codeql-reports "
+                sh "mkdir -p codeql-reports"
                 
                 // This command downloads the standard security query pack and runs it
                 sh """
