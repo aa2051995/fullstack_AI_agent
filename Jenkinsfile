@@ -43,10 +43,11 @@ pipeline {
         stage('CodeQL Analysis') {
             steps {
                 echo "Running CodeQL analysis..."
+                sh "mkdir -p codeql-reports "
                 
                 // This command downloads the standard security query pack and runs it
-                ssh """
-                        mkdir -p codeql-reports
+                sh """
+                        
 
                         codeql database analyze ${DB_DIR} \
                             codeql/javascript-queries:codeql-suites/javascript-security-and-quality.qls \
