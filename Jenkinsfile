@@ -50,7 +50,7 @@ pipeline {
 
                         codeql database analyze ${DB_DIR} \
                             codeql/javascript-queries:codeql-suites/javascript-security-and-quality.qls \
-                            --format=sarif-latest \
+                            --format=sarif-latest  \
                             --output=codeql-reports/results.sarif
                     """
             }
