@@ -19,12 +19,13 @@ pipeline {
     stages {
         stage('Setup and Clean') {
             steps {
+                script {
+                    deleteDir()
+                }
+
                 sh '''
-                    set -e
-                    codeql version
-                    mkdir -p "$CODEQL_CACHE" "$REPORT_DIR"
-                    rm -rf "$DB_DIR" "$REPORT_DIR"
-                    mkdir -p "$CODEQL_CACHE" "$REPORT_DIR"
+                    mkdir -p "$CODEQL_CACHE"
+                    mkdir -p "$REPORT_DIR"
                 '''
             }
         }
