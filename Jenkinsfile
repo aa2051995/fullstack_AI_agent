@@ -45,12 +45,14 @@ pipeline {
                 echo "Running CodeQL analysis..."
                 
                 // This command downloads the standard security query pack and runs it
-                sh """
-                    codeql database analyze ${DB_DIR} \
-                        codeql/${CODEQL_LANG}-queries \
-                        --format=sarif-latest \
-                        --output=${REPORT_DIR}/results.sarif
-                """
+                ssh """
+                        mkdir -p codeql-reports
+
+                        codeql database analyze ${DB_DIR} \
+                            codeql/javascript-queries:codeql-suites/javascript-security-and-quality.qls \
+                            --format=sarif-latest \
+                            --output=codeql-reports/results.sarif
+                    """
             }
         }
     }
