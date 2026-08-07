@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        // Replace with the label you assigned to this specific SSH agent in Jenkins
+        // Replace with trehe label you assigned to this specific SSH agent in Jenkins
         label 'codeql1' 
     }
 
